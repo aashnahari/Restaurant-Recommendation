@@ -6,9 +6,8 @@ const db = new sqlite.Database(dbFile, (error) => {
   console.log(`Connected to database ${dbFile}`);
 });
 const getResturantByCuisine = (request, response) => {
-    const cuisine = parseInt(request.params.id);
     const query = `SELECT * FROM mytable WHERE restaurant_type = ?`;
-    db.get(query, [cuisine], (error, result) => {
+    db.get(query, [request.body.cuisine], (error, result) => {
       if (error) {
         console.error(error.message);
         response.status(400).json({ error: error.message });
@@ -26,9 +25,8 @@ const getResturantByCuisine = (request, response) => {
 
 
   const getResturantByName = (request, response) => {
-    const resName = parseInt(request.params.id);
-    const query = `SELECT * FROM name WHERE resName = ?`;
-    db.get(query, [resName], (error, result) => {
+    const query = `SELECT * FROM mytable WHERE name = ?`;
+    db.get(query, [request.body.name], (error, result) => {
       if (error) {
         console.error(error.message);
         response.status(400).json({ error: error.message });

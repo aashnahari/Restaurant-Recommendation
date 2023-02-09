@@ -41,10 +41,10 @@ app.get("/", (req, res) => {
 });
 
 // This endpoint allows a client to get a single user by id
-app.get("/restaurant/:name", db.getResturantByName);
+app.get("/restaurant", db.getResturantByName);
 
 // Get all users
-app.get("/cuisine/:cuisine", db.getResturantByCuisine);
+app.get("/cuisine", db.getResturantByCuisine);
 
 //-----------------------------
 //#region Server
