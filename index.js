@@ -38,21 +38,14 @@ app.use((req, res, next) => {
 //#region Database Routes
 //-----------------------------
 app.get("/", (req, res) => {
-  res.json({ info: "Demo app for sqlite3" });
+  res.json({ info: "Demo app for Restaurants" });
 });
 
 // This endpoint allows a client to get a single user by id
-app.get("/user/:id", db.getUserById);
+app.get("/restaurant/:name", db.getResturantByName);
 
 // Get all users
-app.get("/users/", db.getAllUsers);
-// Create a new user
-app.post("/users/", db.createNewUser); 
-// Update a user's name, given an id
-app.post("/user/:id", db.updateUser);
-// Delete a user by id
-app.delete("/user/:id", db.deleteUser);
-//#endregion Database Routes
+app.get("/cuisine/:cuisine", db.getResturantByCuisine);
 
 //-----------------------------
 //#region Server
