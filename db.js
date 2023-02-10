@@ -6,7 +6,7 @@ const db = new sqlite.Database(dbFile, (error) => {
   console.log(`Connected to database ${dbFile}`);
 });
 const getResturantByCuisine = (request, response) => {
-    const query = `SELECT * FROM mytable WHERE restaurant_type = ?`;
+    const query = `SELECT * FROM mytable WHERE resturant_type = ?`;
     db.get(query, [request.body.cuisine], (error, result) => {
       if (error) {
         console.error(error.message);
@@ -41,7 +41,27 @@ const getResturantByCuisine = (request, response) => {
     });
   };
 
+  const getResturantByAddress = (request, response) => {
+    const query = `SELECT * FROM mytable WHERE postal_code = ?`;
+    db.get(query, [request.body.cuisine], (error, result) => {
+      if (error) {
+        console.error(error.message);
+        response.status(400).json({ error: error.message });
+        return;
+      }
+      // If nothing is returned, then result will be undefined
+      if (result) {
+        response.json(result);
+      } else {
+        response.sendStatus(404);
+      }
+    });
+  };
+
 module.exports = {
   getResturantByName,
   getResturantByCuisine,
+  getResturantByAddress
 };
+
+
