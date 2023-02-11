@@ -46,7 +46,7 @@ app.get("/restaurant", db.getResturantByName);
 // Get all users
 app.get("/cuisine", db.getResturantByCuisine);
 
-app.get("/address", db.getResturantByAddress);
+app.get("/zipcode", db.getResturantByAddress);
 
 //-----------------------------
 //#region Server
