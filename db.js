@@ -43,7 +43,7 @@ const getResturantByCuisine = (request, response) => {
 
   const getResturantByAddress = (request, response) => {
     const query = `SELECT * FROM mytable WHERE postal_code = ?`;
-    db.get(query, [request.body.cuisine], (error, result) => {
+    db.get(query, [request.body.zipcode], (error, result) => {
       if (error) {
         console.error(error.message);
         response.status(400).json({ error: error.message });
