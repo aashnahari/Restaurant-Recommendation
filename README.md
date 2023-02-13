@@ -36,3 +36,22 @@ Extra functionality #1
 
 Extra functionality #2 
 * A way for users to add images
+
+## Get all restaurants that serve a certain cuisine:
+The url is: localhost:4000/cuisine (get endpoint)
+Write cuisine in body in JSON (ex. {"cuisine":"Seafood"})
+
+## Get all restaurants in a certain zipcode:
+The url is: localhost:4000/zipcode (get endpoint)
+Write zipcode in body in JSON (ex. {"zipcode":"10021"})
+
+## Get all restaurants with a certain name:
+The url is: localhost:4000/restaurant (get endpoint)
+Write name is body in JSON (ex. {"name":"Tavern on the Green"})
+
+
+
+
+
+
+
