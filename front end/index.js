@@ -1,7 +1,13 @@
-streetVal = document.getElementById('streetInput').value
-avenueVal = document.getElementById('avenueInput').value
-zipcodeVal = document.getElementById('zipcodeInput').value
+streetVal = document.querySelector('#streetInput')
+avenueVal = document.querySelector('#avenueInput')
+zipcodeVal = document.querySelector('#zipcodeInput')
 
-console.log(streetVal);
-console.log(avenueVal);
-console.log(zipcodeVal);
+streetVal.addEventListener('keydown', updateValue);
+avenueVal.addEventListener('keydown', updateValue);
+zipcodeVal.addEventListener('keydown', updateValue);
+
+
+function updateValue(e) {
+  if (e.keyCode !== 13) return
+  console.log(e.target.value);
+}
