@@ -60,17 +60,17 @@
   /* hover */
 .textbox input:hover {
     color: rgb(154, 167, 190); /* neutral-400 */
-    border-color: rgb(154, 167, 190); /* neutral-550 */
+    border-color: rgb(22, 78, 174); /* neutral-550 */
   }
   /* focused */
 .textbox input:focused {
     color: rgb(47, 57, 74); /* neutral-400 */
-    border-color: rgb(43, 93, 178); /* neutral-500 */
+    border-color: rgb(154, 167, 190); /* neutral-500 */
   }
   /* disabled */
 .textbox input:disabled {
     color: rgb(141, 143, 147); /* neutral-400 */
-    border-color: rgb(141, 143, 147); /* neutral-500 */
+    border-color: rgb(38, 94, 207); /* neutral-500 */
   }
 .textbox :disabled + .icon, .textbox :disabled + .icon + .icon {
     fill: #171A1FFF; /* neutral-900 */

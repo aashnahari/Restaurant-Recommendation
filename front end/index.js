@@ -1,15 +1,25 @@
-streetVal = document.querySelector('#streetInput')
-avenueVal = document.querySelector('#avenueInput')
-zipcodeVal = document.querySelector('#zipcodeInput')
-cuisineVal = document.querySelector('#cuisineInput')
+enterButton = document.querySelector('.enterButton')
+enterButton.addEventListener('click', entered);
 
-streetVal.addEventListener('keydown', updateValue);
-avenueVal.addEventListener('keydown', updateValue);
-zipcodeVal.addEventListener('keydown', updateValue);
-cuisineVal.addEventListener('keydown', updateValue);
+function entered(){
+  updateValue()
+}
 
-
-function updateValue(e) {
-  if (e.keyCode !== 13) return
-  console.log(e.target.value);
+function updateValue() {
+  if (document.querySelector('#cuisineInput').value){
+    cuisineVal = document.querySelector('#cuisineInput').value
+    console.log(cuisineVal);
+  }
+  if (document.querySelector('#streetInput').value){
+    streetVal = document.querySelector('#streetInput').value
+    console.log(streetVal);
+  }
+  if (document.querySelector('#avenueInput').value){
+    avenueVal = document.querySelector('#avenueInput').value
+    console.log(avenueVal);
+  }
+  if (document.querySelector('#zipcodeInput').value){
+    zipcodeVal = document.querySelector('#zipcodeInput').value
+    console.log(zipcodeVal);
+  }
 }
