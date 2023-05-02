@@ -45,7 +45,7 @@ app.get("/", (req, res) => {
 app.get("/restaurant", db.getResturantByName);
 
 // Get all users
-app.get("/cuisine", db.getResturantByCuisine);
+app.post("/cuisine", db.getResturantByCuisine);
 
 app.get("/zipcode", db.getResturantByAddress);
 

@@ -26,8 +26,8 @@ function updateValue() {
 }
 
 const getCuisine = (cuisine) => {
-  axios.get('https://localhost:4000/cuisine',
-    { data: {  cuisine: cuisine } })
+  axios.post('http://localhost:4000/cuisine',
+    {  cuisine: cuisine })
     .then(response => {
     const restaurants = response.data;
       console.log(restaurants);

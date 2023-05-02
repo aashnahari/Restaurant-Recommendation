@@ -7,6 +7,7 @@ const db = new sqlite.Database(dbFile, (error) => {
 });
 const getResturantByCuisine = (request, response) => {
     const query = `SELECT * FROM mytable WHERE restaurant_type = ?`;
+    console.log(request.body)
     db.get(query, [request.body.cuisine], (error, result) => {
       if (error) {
         console.error(error.message);
