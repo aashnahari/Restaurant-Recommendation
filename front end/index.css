@@ -14,14 +14,11 @@
     left: 20px; 
     opacity: 1; 
 }
-.streetTextbox {
+.addressTextbox {
     left: 20px; 
     opacity: 1; 
 }
-.avenueTextbox {
-    left: 20px; 
-    opacity: 1; 
-}
+
 .zipcodeTextbox {
     left: 20px; 
     opacity: 1; 

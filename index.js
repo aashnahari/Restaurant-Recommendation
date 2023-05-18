@@ -37,17 +37,17 @@ app.use((req, res, next) => {
 //-----------------------------
 //#region Database Routes
 //-----------------------------
-app.get("/", (req, res) => {
+app.post("/", (req, res) => {
   res.json({ info: "Demo app for Restaurants" });
 });
 
 // This endpoint allows a client to get a single user by id
-app.get("/restaurant", db.getResturantByName);
 
 // Get all users
 app.post("/cuisine", db.getResturantByCuisine);
 
-app.get("/zipcode", db.getResturantByAddress);
+app.post("/zipcode", db.getResturantByZipcode);
+app.post("/address", db.getResturantByAddress);
 
 //-----------------------------
 //#region Server

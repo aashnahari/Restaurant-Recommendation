@@ -35,4 +35,26 @@ const getCuisine = (cuisine) => {
     .catch(error => console.error(error));
 };
 
+const getZipcode = (zipcode) => {
+  axios.post('http://localhost:4000/zipcode',
+    {  zipcode: zipcode })
+    .then(response => {
+    const restaurants = response.data;
+      console.log(restaurants);
+    })
+    .catch(error => console.error(error));
+};
+
+const getAddress = (address) => {
+  axios.post('http://localhost:4000/address',
+    {  address: address })
+    .then(response => {
+    const restaurants = response.data;
+      console.log(restaurants);
+    })
+    .catch(error => console.error(error));
+};
+
 getCuisine("Seafood");
+getZipcode("10021");
+getAddress("Fifth");

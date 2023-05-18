@@ -1,5 +1,13 @@
 const path = require("path");
 const sqlite = require("sqlite3").verbose();
+const NodeGeocoder = require('node-geocoder');
+const options = {
+  provider: 'openstreetmap',
+  apiKey: '0fAWxx5m3Bls2bo8NgnbyH8JZ5WVZd0S'
+}
+const geocoder = NodeGeocoder(options);
+
+
 const dbFile = path.join(__dirname, "restaurant.db");
 const db = new sqlite.Database(dbFile, (error) => {
   if (error) return console.error(error.message);
@@ -8,7 +16,7 @@ const db = new sqlite.Database(dbFile, (error) => {
 const getResturantByCuisine = (request, response) => {
     const query = `SELECT * FROM mytable WHERE restaurant_type = ?`;
     console.log(request.body)
-    db.get(query, [request.body.cuisine], (error, result) => {
+    db.all(query, [request.body.cuisine], (error, result) => {
       if (error) {
         console.error(error.message);
         response.status(400).json({ error: error.message });
@@ -25,9 +33,10 @@ const getResturantByCuisine = (request, response) => {
 
 
 
-  const getResturantByName = (request, response) => {
-    const query = `SELECT * FROM mytable WHERE name = ?`;
-    db.get(query, [request.body.name], (error, result) => {
+
+  const getResturantByZipcode = (request, response) => {
+    const query = `SELECT * FROM mytable WHERE postal_code = ?`;
+    db.all(query, [request.body.zipcode], (error, result) => {
       if (error) {
         console.error(error.message);
         response.status(400).json({ error: error.message });
@@ -43,8 +52,9 @@ const getResturantByCuisine = (request, response) => {
   };
 
   const getResturantByAddress = (request, response) => {
-    const query = `SELECT * FROM mytable WHERE postal_code = ?`;
-    db.get(query, [request.body.zipcode], (error, result) => {
+    const query = 'SELECT * FROM mytable WHERE street_address LIKE ?'
+    const res = await geocoder.geocode('?');
+    db.all(query, ["%"+request.body.address+"%"], (error, result) => {
       if (error) {
         console.error(error.message);
         response.status(400).json({ error: error.message });
@@ -60,9 +70,9 @@ const getResturantByCuisine = (request, response) => {
   };
 
 module.exports = {
-  getResturantByName,
   getResturantByCuisine,
-  getResturantByAddress
+  getResturantByZipcode,
+  getResturantByAddress,
 };
 
 
