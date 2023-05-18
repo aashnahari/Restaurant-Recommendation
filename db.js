@@ -53,7 +53,6 @@ const getResturantByCuisine = (request, response) => {
 
   const getResturantByAddress = (request, response) => {
     const query = 'SELECT * FROM mytable WHERE street_address LIKE ?'
-    const res = await geocoder.geocode('?');
     db.all(query, ["%"+request.body.address+"%"], (error, result) => {
       if (error) {
         console.error(error.message);
