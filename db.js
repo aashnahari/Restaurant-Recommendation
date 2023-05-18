@@ -2,7 +2,7 @@ const path = require("path");
 const sqlite = require("sqlite3").verbose();
 const NodeGeocoder = require('node-geocoder');
 const options = {
-  provider: 'openstreetmap',
+  provider: 'mapquest',
   apiKey: '0fAWxx5m3Bls2bo8NgnbyH8JZ5WVZd0S'
 }
 const geocoder = NodeGeocoder(options);
