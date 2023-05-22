@@ -52,21 +52,42 @@ const getResturantByCuisine = (request, response) => {
   };
 
   const getResturantByAddress = (request, response) => {
-    const query = 'SELECT * FROM mytable WHERE street_address LIKE ?'
-    db.all(query, ["%"+request.body.address+"%"], (error, result) => {
-      if (error) {
-        console.error(error.message);
-        response.status(400).json({ error: error.message });
-        return;
-      }
+    const res =  geocoder.geocode(request.body.address, (error,result) =>
+    {
+      console.log(result)
+      const lat = result[0]["latitude"]
+      const long = result[0]["longitude"]
+      const distance = 0.00045045045
+      const query = 'SELECT * FROM mytable WHERE longitude <= ? AND longitude >= ? AND latitude <= ? AND latitude >= ?'
+      db.all(query, [long + distance,long-distance,lat+distance,lat-distance], (error, result) => {
+        if (error) {
+          console.error(error.message);
+          response.status(400).json({ error: error.message });
+          return;
+        }
       // If nothing is returned, then result will be undefined
-      if (result) {
-        response.json(result);
-      } else {
-        response.sendStatus(404);
-      }
+        if (result) {
+          response.json(result);
+        } else {
+          response.sendStatus(404);
+        }
     });
-  };
+  });
+};
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 module.exports = {
   getResturantByCuisine,

@@ -11,17 +11,9 @@ function updateValue() {
     cuisineVal = document.querySelector('#cuisineInput').value
     console.log(cuisineVal);
   }
-  if (document.querySelector('#streetInput').value) {
-    streetVal = document.querySelector('#streetInput').value
-    console.log(streetVal);
-  }
-  if (document.querySelector('#avenueInput').value) {
-    avenueVal = document.querySelector('#avenueInput').value
-    console.log(avenueVal);
-  }
-  if (document.querySelector('#zipcodeInput').value) {
-    zipcodeVal = document.querySelector('#zipcodeInput').value
-    console.log(zipcodeVal);
+  if (document.querySelector('#addressInput').value) {
+    addressVal = document.querySelector('#addressInput').value
+    getAddress(addressVal);
   }
 }
 
@@ -57,4 +49,3 @@ const getAddress = (address) => {
 
 getCuisine("Seafood");
 getZipcode("10021");
-getAddress("Fifth");
