@@ -54,7 +54,6 @@ const getResturantByCuisine = (request, response) => {
   const getResturantByAddress = (request, response) => {
     const res =  geocoder.geocode(request.body.address, (error,result) =>
     {
-      console.log(result)
       const lat = result[0]["latitude"]
       const long = result[0]["longitude"]
       const distance = 0.00045045045
@@ -65,22 +64,42 @@ const getResturantByCuisine = (request, response) => {
           response.status(400).json({ error: error.message });
           return;
         }
+        function compareFn(a, b) {
+          console.log(a)
+          if (a['restaurant_type'] == request.body.cuisine && b['restaurant_type'] == request.body.cuisine) {
+            return 0;
+          }
+          if (a['restaurant_type'] == request.body.cuisine) {
+            return -1;
+          }
+          if (b['restaurant_type'] == request.body.cuisine){
+            return 1;
+          }
+          return 0;
+        }
       // If nothing is returned, then result will be undefined
         if (result) {
-          response.json(result);
+          if (request.body.cuisine != null){
+            result.sort(compareFn);
+            response.json(result);
+          }
+          
         } else {
           response.sendStatus(404);
         }
-    });
-  });
-};
-    
-    
-    
-    
-    
-    
-    
+      });
+    }); 
+  };  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
     
     
     

@@ -7,12 +7,16 @@ function entered() {
 }
 
 function updateValue() {
-  if (document.querySelector('#cuisineInput').value) {
-    cuisineVal = document.querySelector('#cuisineInput').value
-    console.log(cuisineVal);
-  }
+  
+  
+  
+  
   if (document.querySelector('#addressInput').value) {
     addressVal = document.querySelector('#addressInput').value
+    if (document.querySelector('#cuisineInput').value) {
+      cuisineVal = document.querySelector('#cuisineInput').value
+      getAddress(addressVal,cuisineVal);
+    }
     getAddress(addressVal);
   }
 }
@@ -37,9 +41,9 @@ const getZipcode = (zipcode) => {
     .catch(error => console.error(error));
 };
 
-const getAddress = (address) => {
+const getAddress = (address,cuisine) => {
   axios.post('http://localhost:4000/address',
-    {  address: address })
+    {  address: address, cuisine: cuisine })
     .then(response => {
     const restaurants = response.data;
       console.log(restaurants);
@@ -48,4 +52,3 @@ const getAddress = (address) => {
 };
 
 getCuisine("Seafood");
-getZipcode("10021");
