@@ -1,7 +1,7 @@
 
 enterButton = document.querySelector('.enterButton')
 enterButton.addEventListener('click', entered);
-const results = [];
+var results = [];
 
 function entered() {
   updateValue()
@@ -18,14 +18,20 @@ function updateValue() {
       cuisineVal = document.querySelector('#cuisineInput').value
       getAddress(addressVal,cuisineVal);
     }
-    getAddress(addressVal);
+    //getAddress(addressVal);
   }
 }
 
 function updateResults(){
-  results.forEach(createHTML)
-  function createHTML(){
-    
+  results.forEach(result => createHTML(result))
+  function createHTML(result){
+    const res = document.createElement('div');
+    res.className = "container";
+    const name = document.createTextNode(result['name']);
+    console.log(result);
+    res.appendChild(name);
+    document.body.appendChild(res);
+
   }
 }
 
@@ -45,6 +51,7 @@ const getAddress = (address,cuisine) => {
     {  address: address, cuisine: cuisine })
     .then(response => {
       results = response.data;
+      console.log(results);
       if (results != null){
         updateResults()
       }
@@ -54,4 +61,4 @@ const getAddress = (address,cuisine) => {
 
 };
 
-getCuisine("Seafood");
+// getCuisine("Seafood");
