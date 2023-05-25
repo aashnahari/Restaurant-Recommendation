@@ -30,26 +30,7 @@ const getResturantByCuisine = (request, response) => {
       }
     });
   };
-
-
-
-
-  const getResturantByZipcode = (request, response) => {
-    const query = `SELECT * FROM mytable WHERE postal_code = ?`;
-    db.all(query, [request.body.zipcode], (error, result) => {
-      if (error) {
-        console.error(error.message);
-        response.status(400).json({ error: error.message });
-        return;
-      }
-      // If nothing is returned, then result will be undefined
-      if (result) {
-        response.json(result);
-      } else {
-        response.sendStatus(404);
-      }
-    });
-  };
+ 
 
   const getResturantByAddress = (request, response) => {
     const res =  geocoder.geocode(request.body.address, (error,result) =>
@@ -110,7 +91,6 @@ const getResturantByCuisine = (request, response) => {
 
 module.exports = {
   getResturantByCuisine,
-  getResturantByZipcode,
   getResturantByAddress,
 };
 
