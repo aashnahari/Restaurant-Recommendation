@@ -1,6 +1,14 @@
 # Restaurant-Recommendation
 
 
+HOW TO USE WEBSITE:
+1. Run nodemon in terminal
+2. Go to website
+3. Enter in address and desired cuisine
+4. Click Enter
+5. Enjoy!
+
+
 1. What is your project idea?
 
 Our project idea is to create a program that recommends a restaurant based on certain things that you input. For example, you can input your location, the kind of food you want, and your price range, and our website will recommend a restaurant given the parameters that one enters. 
