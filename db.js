@@ -37,7 +37,7 @@ const getResturantByCuisine = (request, response) => {
     {
       const lat = result[0]["latitude"]
       const long = result[0]["longitude"]
-      const distance = 0.00045045045
+      const distance = 0.004505324
       const query = 'SELECT * FROM mytable WHERE longitude <= ? AND longitude >= ? AND latitude <= ? AND latitude >= ?'
       db.all(query, [long + distance,long-distance,lat+distance,lat-distance], (error, result) => {
         if (error) {
