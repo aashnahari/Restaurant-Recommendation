@@ -16,6 +16,20 @@
   opacity: 1; 
 }
 
+.dropdown{
+  display: flex; 
+  justify-content: center;
+  opacity: 1; 
+}
+
+.dropdown .cuisineText{
+  font-size: 24px; 
+  line-height: 22px; 
+  color: rgb(47, 57, 74);
+  font-family: Epilogue;
+  padding-right: 10px;
+  font-weight: bold;
+}
 
 .textbox input {
     width: 335px; 
@@ -90,7 +104,7 @@
 .container {
   position: relative; 
   width: 500px;
-  height: 100px; 
+  height: 125px; 
   background: #FFFFFFFF; /* white */
   border-radius: 4px; /* border-m */
   border-width: 2px; 

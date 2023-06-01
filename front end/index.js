@@ -14,11 +14,9 @@ function updateValue() {
   
   if (document.querySelector('#addressInput').value) {
     addressVal = document.querySelector('#addressInput').value
-    if (document.querySelector('#cuisineInput').value) {
-      cuisineVal = document.querySelector('#cuisineInput').value
-      getAddress(addressVal,cuisineVal);
-    }
-    //getAddress(addressVal);
+    var cuisine = document.getElementById("cuisines");
+    var cuisineVal = cuisine.options[cuisine.selectedIndex].text;
+    getAddress(addressVal,cuisineVal);
   }
 }
 
@@ -71,6 +69,12 @@ function updateResults(){
     const phone = document.createElement("span");
     phone.innerText = "Phone Number: " + result['phone'];
     res.appendChild(phone);
+
+    res.appendChild(document.createElement("br"));
+
+    const price = document.createElement("span");
+    price.innerText = "Price Range: " + result['price_range'];
+    res.appendChild(price);
 
     
     resultClass.appendChild(document.createElement("br"))
